@@ -2,19 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   @apply bg-navy text-cream font-body antialiased;
   overflow-x: hidden;
 }
 
-::selection {
-  background: #e8a020;
-  color: #0d1b2a;
-}
+::selection { background: #e8a020; color: #0d1b2a; }
 
 /* ── Trust bar marquee ── */
 @keyframes marquee {
@@ -26,42 +21,28 @@ body {
   will-change: transform;
 }
 
-/* ── Testimonial infinite carousel ── */
-@keyframes testimonial-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-33.333%); }
-}
-.testimonial-track {
-  animation: testimonial-scroll 32s linear infinite;
-  will-change: transform;
-}
-.testimonial-track.paused {
-  animation-play-state: paused;
-}
-
-/* ── Hero primary button shimmer sweep ── */
+/* ── Hero primary button — shimmer sweep fires once on load ── */
 @keyframes shimmer-sweep {
-  0%   { transform: translateX(-120%) skewX(-15deg); opacity: 0.9; }
-  100% { transform: translateX(220%)  skewX(-15deg); opacity: 0.9; }
+  0%   { transform: translateX(-130%) skewX(-15deg); }
+  100% { transform: translateX(230%)  skewX(-15deg); }
 }
 .shimmer-once {
-  animation: shimmer-sweep 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.6s 1 forwards;
+  animation: shimmer-sweep 1.05s cubic-bezier(0.16, 1, 0.3, 1) 1.8s 1 forwards;
 }
 
-/* ── WhatsApp pulse rings ── */
+/* ── WhatsApp — two amber pulse rings ── */
 @keyframes pulse-ring {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  100% { transform: scale(2.4); opacity: 0;   }
+  0%   { transform: scale(1);   opacity: 0.65; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
-.wa-ring-1 { animation: pulse-ring 2s cubic-bezier(0.16, 1, 0.3, 1) 0s   infinite; }
-.wa-ring-2 { animation: pulse-ring 2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s infinite; }
+.wa-ring-1 { animation: pulse-ring 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0s   infinite; }
+.wa-ring-2 { animation: pulse-ring 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.75s infinite; }
 
-/* ── Reduced motion ── */
+/* ── Reduced motion — kill every decorative animation ── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track,
-  .testimonial-track,
   .shimmer-once,
   .wa-ring-1,
-  .wa-ring-2 { animation: none; }
+  .wa-ring-2 { animation: none !important; }
 }
